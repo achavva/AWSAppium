@@ -1,31 +1,31 @@
 package com.android.automation.application;
 
 
-import io.appium.java_client.AppiumDriver;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+
 public class ApplicationLibrary {
 
 	private static final Logger LOGGER = Logger.getLogger(ApplicationLibrary.class.getName());
-	private AppiumDriver<WebElement> driver;
+	private AppiumDriver<MobileElement> driver;
 
-	public ApplicationLibrary(AppiumDriver<WebElement> driver) {
+	public ApplicationLibrary(AppiumDriver<MobileElement> driver) {
 		this.driver = driver;
 	}
 
 	public WebElement verifyElement(By locator, String sRepoText) {
 		WebElement element = null;
 		try {
-			List<WebElement> elements = driver.findElements(locator);
+			List<MobileElement> elements = driver.findElements(locator);
 			Boolean eleExist = elements.size() > 0 ? true : false;
 			if (eleExist == true) {
 				element = elements.get(0);
